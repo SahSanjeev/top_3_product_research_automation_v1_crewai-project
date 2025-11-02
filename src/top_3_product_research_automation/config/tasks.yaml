@@ -1,0 +1,34 @@
+---
+identify_leading_companies_and_products:
+  description: Research and identify the leading companies in the {category} industry.
+    For each company, discover their main products and services offered. Focus on
+    finding at least 5-7 major companies and compile a comprehensive list of their
+    key products with brief descriptions.
+  expected_output: A detailed list of leading companies in {category} with their key
+    products, including company names, product names, brief descriptions, and any
+    notable features or market positions
+  agent: market_research_analyst
+evaluate_and_rank_products:
+  description: Analyze all the products identified in the previous research phase.
+    Evaluate each product based on key criteria such as features, market share, user
+    reviews, innovation, pricing, and overall value proposition. Research additional
+    details about top contenders including customer feedback, expert reviews, and
+    market performance. Identify and rank the top 3 products overall in the {category}.
+  expected_output: A ranked list of the top 3 products in {category} with detailed
+    evaluation criteria, scores, and justification for each ranking including strengths,
+    weaknesses, and key differentiators
+  agent: product_evaluation_specialist
+  context:
+  - identify_leading_companies_and_products
+create_top_products_report:
+  description: Create a comprehensive report presenting the top 3 products in {category}.
+    The report should include an executive summary, detailed profiles of each top
+    product, comparative analysis, market insights, and recommendations. Structure
+    the report in a professional format with clear sections and actionable insights.
+  expected_output: A well-structured markdown report titled "Top 3 Products in {category}"
+    containing executive summary, detailed product profiles, comparative analysis
+    table, key findings, and recommendations for decision-makers
+  agent: research_report_writer
+  context:
+  - identify_leading_companies_and_products
+  - evaluate_and_rank_products
